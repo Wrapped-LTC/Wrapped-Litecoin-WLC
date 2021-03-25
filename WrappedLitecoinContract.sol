@@ -1,4 +1,4 @@
-pragma solidity ^0.7.5;
+pragma solidity ^0.7.6;
 
 
 contract WrappedLitecoin {
@@ -25,13 +25,13 @@ contract WrappedLitecoin {
     
     
     
-    constructor(uint256 _TokenCap, uint256 _TokenSupply, string memory _name, string memory _symbol, uint8 _decimals){
+    constructor(uint256 _TokenCap, string memory _name, string memory _symbol, uint8 _decimals, address _owneraddy){
     TokenCap = _TokenCap;
-    TotalSupply = _TokenSupply;
+    TotalSupply = 0;
     name = _name;
     symbol = _symbol;
     decimals = _decimals;
-    ownerAddy = msg.sender;
+    ownerAddy = _owneraddy;
     //Deployment Constructors
     }
     
@@ -84,7 +84,10 @@ contract WrappedLitecoin {
     }
 
 
-
+      function allowance(address owner, address delegate) public view returns (uint256) {
+        return allowed[owner][delegate];
+    
+    }
 
 
 }
